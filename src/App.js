@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom'
+import PoemListPage from './PoemListPage'
+import PoemPage from './PoemPage'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className='App'>
+
+        <nav>
+          <Link to='/'>Poem List</Link>
+        </nav>
+
+        <header>
+          <h1>William Setstatespear</h1>
+        </header>
+
+        <main>
+          <Route
+            exact path='/'
+            component={PoemListPage}
+          />
+          <Route
+            path='/poem/:poemId'
+            component={PoemPage}
+          />
+        </main>
+
+        <footer>
+          <p>© WilliamSetstatespear, 2018. All Rights Reserved.</p>
+        </footer>
+        
+      </div>
+    );
+  }
 }
 
 export default App;
